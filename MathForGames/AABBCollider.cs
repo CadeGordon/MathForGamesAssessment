@@ -92,7 +92,7 @@ namespace MathForGames
         {
             get
             {
-                return Owner.LocalPosition.Z + Depth / 2;
+                return Owner.LocalPosition.Z - Depth / 2;
             }
         }
 
@@ -113,9 +113,11 @@ namespace MathForGames
 
             //Return true if there is an overlap between boxes
             if(other.Left <= Right &&
-               other.Top <= Bottom &&
-               Left <= other.Right &&
-               Top <= other.Bottom)
+                other.Bottom <= Top &&
+                other.Back <= Front &&
+                Left <= other.Right &&
+                Bottom <= other.Top &&
+                Back <= other.Front)
             {
                 return true;
             }
@@ -131,7 +133,7 @@ namespace MathForGames
 
         public override void Draw()
         {
-            Raylib.DrawRectangleLines((int)Left, (int)Top, (int)Width, (int)Height, Color.RED);
+            Raylib.DrawCubeWires(new System.Numerics.Vector3(Owner.WorldPosition.X, Owner.WorldPosition.Y, Owner.WorldPosition.Z), Width, Height, Depth, Color.RED);
         }
     }
 }

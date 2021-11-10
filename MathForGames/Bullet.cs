@@ -53,8 +53,14 @@ namespace MathForGames
         {
             if (actor is Enemy)
             {
-                currentScene.RemoveActor(actor);
+                Console.WriteLine("Collision Occured");
             }
+
+            //if (actor is Enemy)
+            //{
+            //    currentScene.RemoveActor(actor);
+            //}
+
                 
         }
     }

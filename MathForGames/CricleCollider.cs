@@ -46,6 +46,7 @@ namespace MathForGames
             //Clamp the direction vector to be withn the bounds of the AABB
             direction.X = Math.Clamp(direction.X, -other.Width/2, other.Width/2);
             direction.Y = Math.Clamp(direction.Y, -other.Height/2, other.Height/2);
+            direction.Z = Math.Clamp(direction.Z, -other.Depth / 2, other.Depth / 2);
 
             //Add the direction vector to the AABB center to hget the closest point to the circle
             Vector3 closestPoint = other.Owner.LocalPosition + direction;
@@ -60,7 +61,7 @@ namespace MathForGames
         public override void Draw()
         {
             base.Draw();
-            Raylib.DrawCircleLines((int)Owner.LocalPosition.X, (int)Owner.LocalPosition.Y, CollisionRadius, Color.GOLD);
+            Raylib.DrawSphereWires(new System.Numerics.Vector3(Owner.WorldPosition.X, Owner.WorldPosition.Y, Owner.WorldPosition.Z), CollisionRadius, 40, 4, Color.WHITE);
         }
     }
 }

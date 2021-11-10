@@ -89,34 +89,31 @@ namespace MathForGames
 
             Player player = new Player(0, 0, 0, 50, "player", Shape.SPHERE);
             player.SetScale(1, 1, 1);
-            player.SetColor(new Vector4(12, 65, 7, 220));
+            player.SetColor(new Vector4(12, 65, 7, 255));
             _player = player;
             scene.AddActor(player);
+            CircleCollider playerCircleCollider = new CircleCollider(1, player);
+            player.Collider = playerCircleCollider;
 
             Actor companion = new Actor(2, 1.5f, 0, "Companion", Shape.SPHERE);
             companion.SetScale(.8f, .8f, .8f);
             companion.SetColor(new Vector4(114, 25, 65, 225));
             scene.AddActor(companion);
             player.AddChild(companion);
-            
-
-            
 
 
-
-            //CircleCollider playercirclecollider = new CircleCollider(25, player);
-            //AABBCollider playerboxcollider = new AABBCollider(50, 50, player);
-            //player.Collider = playercirclecollider;
+           
 
 
 
-            Enemy enemy = new Enemy(0, 0, 0, 50, 25, player, "Enemy", Shape.CUBE);
+            Enemy enemy = new Enemy(5, 0, 0, 50, 25, player, "Enemy", Shape.CUBE);
             enemy.SetColor(new Vector4(12, 65, 7, 220));
             enemy.SetScale(1, 1, 1);
             scene.AddActor(enemy);
 
             //CircleCollider enemyCircleCollider = new CircleCollider(10, enemy);
-            //AABBCollider enemymyBoxCollider;
+            AABBCollider enemyAABBBoxCollider = new AABBCollider(1, 1, 1, enemy);
+            enemy.Collider = enemyAABBBoxCollider;
 
 
 
@@ -164,7 +161,7 @@ namespace MathForGames
             Raylib.BeginMode3D(_camera);
 
             Raylib.ClearBackground(Color.RAYWHITE);
-            Raylib.DrawGrid(50, 1);
+            Raylib.DrawGrid(200, 1);
 
             //Adds all actor icons to buffer
             _scenes[_currentSeneIndex].Draw();

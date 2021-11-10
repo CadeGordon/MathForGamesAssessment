@@ -71,14 +71,15 @@ namespace MathForGames
 
         public override void OnCollision(Actor actor, Scene currentScene)
         {
-            currentScene.RemoveActor(actor);
-            currentScene.RemoveActor(this);
+            Console.WriteLine("collison occured");
+            //currentScene.RemoveActor(actor);
+            //currentScene.RemoveActor(this);
         }
 
         public override void Draw()
         {
             base.Draw();
-            //Collider.Draw();
+            Collider.Draw();
         }
     }
 }

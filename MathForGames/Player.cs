@@ -51,16 +51,19 @@ namespace MathForGames
             if (bulletDirectionX != 0 && _bulletTimer >= .3 || bulletDirectionZ != 0 && _bulletTimer >= .3)
             {
                 Bullet bullet = new Bullet(LocalPosition.X, LocalPosition.Y, LocalPosition.Z, bulletDirectionX, bulletDirectionZ, 10, "Bullet", Shape.SPHERE);
+                CircleCollider bulletCollider = new CircleCollider(1f, bullet);
+                bullet.Collider = bulletCollider;
                 bullet.SetScale(1f, 1f, 1f);
                 bullet.SetColor(new Vector4(234, 134, 154, 255));
                 currentScene.AddActor(bullet);
 
-                //CircleCollider bulletCollider = new CircleCollider(.5f, bullet);
-                //bullet.Collider = bulletCollider;
+                 
 
 
                 _bulletTimer = 0;
             }
+
+            
 
             //Create a vector that stores the move input
             Vector3 moveDirection = new Vector3(xDirection, 0, zDirection);
@@ -82,13 +85,13 @@ namespace MathForGames
         public override void OnCollision(Actor actor, Scene currentScene)
         {
             if (actor is Enemy)
-                Engine.CloseApplication();
+                Console.WriteLine("Collison Occured");
         }
 
         public override void Draw()
         {
             base.Draw();
-            //Collider.Draw();
+            Collider.Draw();
         }
 
     }
