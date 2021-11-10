@@ -11,6 +11,7 @@ namespace MathForGames
     {
         private Vector3 _velocity;
         private float _speed;
+        private float _timer;
 
         public float Speed
         {
@@ -34,7 +35,6 @@ namespace MathForGames
 
         public override void Update(float deltaTime, Scene currentScene)
         {
-            
 
             //Create a vector that stores the move input
             Vector3 moveDirection = new Vector3(_velocity.X, _velocity.Y, _velocity.Z );
@@ -45,23 +45,24 @@ namespace MathForGames
 
             base.Update(deltaTime, currentScene);
 
+           
+
+           
+                
         }
 
         
 
         public override void OnCollision(Actor actor, Scene currentScene)
         {
+            
+
             if (actor is Enemy)
             {
-                Console.WriteLine("Collision Occured");
+                currentScene.RemoveActor(actor);
             }
 
-            //if (actor is Enemy)
-            //{
-            //    currentScene.RemoveActor(actor);
-            //}
 
-                
         }
     }
 }

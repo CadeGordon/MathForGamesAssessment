@@ -89,7 +89,7 @@ namespace MathForGames
 
             Player player = new Player(0, 0, 0, 50, "player", Shape.SPHERE);
             player.SetScale(1, 1, 1);
-            player.SetColor(new Vector4(12, 65, 7, 255));
+            player.SetColor(new Vector4(0, 0, 255, 255));
             _player = player;
             
             CircleCollider playerCircleCollider = new CircleCollider(1, player);
@@ -97,7 +97,7 @@ namespace MathForGames
 
             Actor companion = new Actor(2, 1.5f, 0, "Companion", Shape.SPHERE);
             companion.SetScale(.8f, .8f, .8f);
-            companion.SetColor(new Vector4(114, 25, 65, 225));
+            companion.SetColor(new Vector4(255, 165, 0, 255));
             
             player.AddChild(companion);
 
@@ -112,12 +112,9 @@ namespace MathForGames
             wall.SetColor(new Vector4(128, 0, 128, 255));
 
             Enemy enemy = new Enemy(5, 0, 0, 50, 25, player, "Enemy", Shape.CUBE);
-            enemy.SetColor(new Vector4(12, 65, 7, 220));
-            enemy.SetScale(1, 1, 1);
-            
-
-            //CircleCollider enemyCircleCollider = new CircleCollider(10, enemy);
-            AABBCollider enemyAABBBoxCollider = new AABBCollider(1, 1, 1, enemy);
+            enemy.SetColor(new Vector4(255, 0, 0, 255));
+            enemy.SetScale(5, 5, 5);
+            AABBCollider enemyAABBBoxCollider = new AABBCollider(5, 5, 5, enemy);
             enemy.Collider = enemyAABBBoxCollider;
 
             //UIText text = new UIText(10, 10, "TestBox", Color.LIME, 70, 70, 15, "This is the test text \n it is not to be taken seriously");

@@ -13,6 +13,7 @@ namespace MathForGames
         private float _speed;
         private float _bulletTimer;
         
+        
 
         public float Speed
         {
@@ -57,11 +58,11 @@ namespace MathForGames
                 bullet.SetColor(new Vector4(234, 134, 154, 255));
                 currentScene.AddActor(bullet);
 
-                 
-
 
                 _bulletTimer = 0;
             }
+
+            
 
             
 
