@@ -93,8 +93,8 @@ namespace MathForGames
             _player = player;
             scene.AddActor(player);
 
-            Actor companion = new Actor(1, 0, 0, "Companion", Shape.SPHERE);
-            companion.SetScale(1, 1, 1);
+            Actor companion = new Actor(3, 1, 0, "Companion", Shape.SPHERE);
+            companion.SetScale(.8f, .8f, .8f);
             companion.SetColor(new Vector4(114, 25, 65, 225));
             scene.AddActor(companion);
             player.AddChild(companion);
@@ -107,10 +107,10 @@ namespace MathForGames
 
 
 
-            //Enemy enemy = new Enemy(0, 0, 0, 50, 50, player, "Enemy", Shape.CUBE);
-            //enemy.SetColor(new Vector4(12, 65, 7, 220));
-            //enemy.SetScale(1, 1, 1);
-            //scene.AddActor(enemy);
+            Enemy enemy = new Enemy(0, 0, 0, 50, 25, player, "Enemy", Shape.CUBE);
+            enemy.SetColor(new Vector4(12, 65, 7, 220));
+            enemy.SetScale(1, 1, 1);
+            scene.AddActor(enemy);
 
             //CircleCollider enemyCircleCollider = new CircleCollider(10, enemy);
             //AABBCollider enemymyBoxCollider;
