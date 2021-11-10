@@ -93,11 +93,14 @@ namespace MathForGames
             _player = player;
             scene.AddActor(player);
 
-            Actor companion = new Actor(3, 1, 0, "Companion", Shape.SPHERE);
+            Actor companion = new Actor(2, 1.5f, 0, "Companion", Shape.SPHERE);
             companion.SetScale(.8f, .8f, .8f);
             companion.SetColor(new Vector4(114, 25, 65, 225));
             scene.AddActor(companion);
             player.AddChild(companion);
+            
+
+            
 
 
 
@@ -143,7 +146,7 @@ namespace MathForGames
             _scenes[_currentSeneIndex].Update(deltaTime, _scenes[_currentSeneIndex]);
 
             //change the prespective of the camera (example first person)
-            _camera.position = new System.Numerics.Vector3(_player.WorldPosition.X, _player.WorldPosition.Y + 15, _player.WorldPosition.Z + 15);
+            _camera.position = new System.Numerics.Vector3(_player.WorldPosition.X, _player.WorldPosition.Y + 8, _player.WorldPosition.Z + 15);
             _camera.target = new System.Numerics.Vector3(_player.WorldPosition.X, _player.WorldPosition.Y, _player.WorldPosition.Z);
            
            

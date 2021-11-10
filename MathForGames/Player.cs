@@ -11,6 +11,7 @@ namespace MathForGames
     {
         private Vector3 _velocity;
         private float _speed;
+        private float _bulletTimer;
         
 
         public float Speed
@@ -39,56 +40,27 @@ namespace MathForGames
             int zDirection = -Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_W))
                + Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_S));
 
-            //if (Convert.ToBoolean(Raylib.IsKeyPressed(KeyboardKey.KEY_UP)))
-            //{
-            //    Bullet bullet = new Bullet(LocalPosition.X, LocalPosition.Y, LocalPosition.Z, 0, 0, 0, 100, "Bullet", Shape.SPHERE);
-            //    bullet.SetScale(50, 50, 50);
-            //    currentScene.AddActor(bullet);
-            //    //CircleCollider bulletCircleCollider = new CircleCollider(5, bullet);
-            //    //AABBCollider bulletBoxCollider = new AABBCollider(10, 10, bullet);
-            //    //bullet.Collider = bulletBoxCollider;
+            int bulletDirectionX = -Convert.ToInt32(Raylib.IsKeyPressed(KeyboardKey.KEY_LEFT))
+               + Convert.ToInt32(Raylib.IsKeyPressed(KeyboardKey.KEY_RIGHT));
 
-            //}
+            int bulletDirectionZ = -Convert.ToInt32(Raylib.IsKeyPressed(KeyboardKey.KEY_UP))
+               + Convert.ToInt32(Raylib.IsKeyPressed(KeyboardKey.KEY_DOWN));
 
-            //if (Convert.ToBoolean(Raylib.IsKeyPressed(KeyboardKey.KEY_DOWN)))
-            //{
-            //    Bullet bullet = new Bullet(LocalPosition.X, LocalPosition.Y, LocalPosition.Z, 0, 0, 0, 100, "Bullet", Shape.CUBE);
-            //    bullet.SetScale(50, 50, 50);
-            //    currentScene.AddActor(bullet);
-            //    //CircleCollider bulletCircleCollider = new CircleCollider(5, bullet);
-            //    //AABBCollider bulletBoxCollider = new AABBCollider(10, 10, bullet);
-            //    //bullet.Collider = bulletBoxCollider;
+            _bulletTimer += deltaTime;
 
-            //}
+            if (bulletDirectionX != 0 && _bulletTimer >= .3 || bulletDirectionZ != 0 && _bulletTimer >= .3)
+            {
+                Bullet bullet = new Bullet(LocalPosition.X, LocalPosition.Y, LocalPosition.Z, bulletDirectionX, bulletDirectionZ, 10, "Bullet", Shape.SPHERE);
+                bullet.SetScale(1f, 1f, 1f);
+                bullet.SetColor(new Vector4(234, 134, 154, 255));
+                currentScene.AddActor(bullet);
 
-            //if (Convert.ToBoolean(Raylib.IsKeyPressed(KeyboardKey.KEY_LEFT)))
-            //{
-            //    Bullet bullet = new Bullet(LocalPosition.X, LocalPosition.Y, LocalPosition.Z, 0, 0, 0, 100, "Bullet", Shape.CUBE);
-            //    bullet.SetScale(50, 50, 50);
-            //    currentScene.AddActor(bullet);
-            //    //CircleCollider bulletCircleCollider = new CircleCollider(5, bullet);
-            //    //AABBCollider bulletBoxCollider = new AABBCollider(10, 10, bullet);
-            //    //bullet.Collider = bulletBoxCollider;
-
-            //}
-
-            //if (Convert.ToBoolean(Raylib.IsKeyPressed(KeyboardKey.KEY_RIGHT)))
-            //{
-            //    Bullet bullet = new Bullet(LocalPosition.X, LocalPosition.Y, LocalPosition.Z, 0, 0, 0, 100, "Bullet", Shape.CUBE);
-            //    bullet.SetScale(50, 50, 50);
-            //    currentScene.AddActor(bullet);
-            //    //CircleCollider bulletCircleCollider = new CircleCollider(5, bullet);
-            //    //AABBCollider bulletBoxCollider = new AABBCollider(10, 10, bullet);
-            //    //bullet.Collider = bulletBoxCollider;
-
-            //}
+                //CircleCollider bulletCollider = new CircleCollider(.5f, bullet);
+                //bullet.Collider = bulletCollider;
 
 
-
-
-
-
-
+                _bulletTimer = 0;
+            }
 
             //Create a vector that stores the move input
             Vector3 moveDirection = new Vector3(xDirection, 0, zDirection);
