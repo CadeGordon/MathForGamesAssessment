@@ -92,18 +92,19 @@ namespace MathForGames
             player.SetColor(new Vector4(12, 65, 7, 220));
             _player = player;
 
-            CircleCollider playercirclecollider = new CircleCollider(25, player);
-            AABBCollider playerboxcollider = new AABBCollider(50, 50, player);
-            player.Collider = playercirclecollider;
+            //CircleCollider playercirclecollider = new CircleCollider(25, player);
+            //AABBCollider playerboxcollider = new AABBCollider(50, 50, player);
+            //player.Collider = playercirclecollider;
 
             scene.AddActor(player);
 
             Enemy enemy = new Enemy(0, 0, 0, 50, 50, player, "Enemy", Shape.CUBE);
+            enemy.SetColor(new Vector4(12, 65, 7, 220));
             enemy.SetScale(1, 1, 1);
             scene.AddActor(enemy);
 
-            CircleCollider enemyCircleCollider = new CircleCollider(10, enemy);
-            AABBCollider enemymyBoxCollider;
+            //CircleCollider enemyCircleCollider = new CircleCollider(10, enemy);
+            //AABBCollider enemymyBoxCollider;
             
 
 
