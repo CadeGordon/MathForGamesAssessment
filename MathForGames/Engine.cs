@@ -91,40 +91,44 @@ namespace MathForGames
             player.SetScale(1, 1, 1);
             player.SetColor(new Vector4(12, 65, 7, 255));
             _player = player;
-            scene.AddActor(player);
+            
             CircleCollider playerCircleCollider = new CircleCollider(1, player);
             player.Collider = playerCircleCollider;
 
             Actor companion = new Actor(2, 1.5f, 0, "Companion", Shape.SPHERE);
             companion.SetScale(.8f, .8f, .8f);
             companion.SetColor(new Vector4(114, 25, 65, 225));
-            scene.AddActor(companion);
+            
             player.AddChild(companion);
 
+            Actor floor = new Actor(0, 0, 0, "floor");
+            floor.SetScale(200, 1, 200);
+            floor.SetTranslation(0, -2, 0);
+            floor.SetColor(new Vector4(0, 0, 0, 255));
 
-           
-
-
+            Actor wall = new Actor(0, 0, 0, "Wall");
+            wall.SetScale(200, 50, 2);
+            wall.SetTranslation(0, -2, 100);
+            wall.SetColor(new Vector4(128, 0, 128, 255));
 
             Enemy enemy = new Enemy(5, 0, 0, 50, 25, player, "Enemy", Shape.CUBE);
             enemy.SetColor(new Vector4(12, 65, 7, 220));
             enemy.SetScale(1, 1, 1);
-            scene.AddActor(enemy);
+            
 
             //CircleCollider enemyCircleCollider = new CircleCollider(10, enemy);
             AABBCollider enemyAABBBoxCollider = new AABBCollider(1, 1, 1, enemy);
             enemy.Collider = enemyAABBBoxCollider;
 
-
-
-
-
-
             //UIText text = new UIText(10, 10, "TestBox", Color.LIME, 70, 70, 15, "This is the test text \n it is not to be taken seriously");
 
             //scene.AddActor(text);
 
-
+            scene.AddActor(player);
+            scene.AddActor(companion);
+            scene.AddActor(enemy);
+            scene.AddActor(floor);
+            scene.AddActor(wall);
 
 
 
@@ -143,7 +147,7 @@ namespace MathForGames
             _scenes[_currentSeneIndex].Update(deltaTime, _scenes[_currentSeneIndex]);
 
             //change the prespective of the camera (example first person)
-            _camera.position = new System.Numerics.Vector3(_player.WorldPosition.X, _player.WorldPosition.Y + 8, _player.WorldPosition.Z + 15);
+            _camera.position = new System.Numerics.Vector3(_player.WorldPosition.X, _player.WorldPosition.Y + 5, _player.WorldPosition.Z + 15);
             _camera.target = new System.Numerics.Vector3(_player.WorldPosition.X, _player.WorldPosition.Y, _player.WorldPosition.Z);
            
            

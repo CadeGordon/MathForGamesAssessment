@@ -50,7 +50,7 @@ namespace MathForGames
 
             if (bulletDirectionX != 0 && _bulletTimer >= .3 || bulletDirectionZ != 0 && _bulletTimer >= .3)
             {
-                Bullet bullet = new Bullet(LocalPosition.X, LocalPosition.Y, LocalPosition.Z, bulletDirectionX, bulletDirectionZ, 10, "Bullet", Shape.SPHERE);
+                Bullet bullet = new Bullet(LocalPosition.X, LocalPosition.Y, LocalPosition.Z, bulletDirectionX, bulletDirectionZ, 60, "Bullet", Shape.SPHERE);
                 CircleCollider bulletCollider = new CircleCollider(1f, bullet);
                 bullet.Collider = bulletCollider;
                 bullet.SetScale(1f, 1f, 1f);
