@@ -72,8 +72,11 @@ namespace MathForGames
         public override void OnCollision(Actor actor, Scene currentScene)
         {
             Console.WriteLine("collison occured");
+            SetScale(50, 50, 50);
             //currentScene.RemoveActor(actor);
             //currentScene.RemoveActor(this);
+            
+
         }
 
         public override void Draw()

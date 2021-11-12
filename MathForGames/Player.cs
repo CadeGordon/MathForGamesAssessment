@@ -54,7 +54,7 @@ namespace MathForGames
                 Bullet bullet = new Bullet(LocalPosition.X, LocalPosition.Y, LocalPosition.Z, bulletDirectionX, bulletDirectionZ, 60, "Bullet", Shape.SPHERE);
                 CircleCollider bulletCollider = new CircleCollider(1f, bullet);
                 bullet.Collider = bulletCollider;
-                bullet.SetScale(1f, 1f, 1f);
+                bullet.SetScale(.5f, .5f, .5f);
                 bullet.SetColor(new Vector4(234, 134, 154, 255));
                 currentScene.AddActor(bullet);
 

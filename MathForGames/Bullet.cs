@@ -44,10 +44,6 @@ namespace MathForGames
             LocalPosition += Velocity;
 
             base.Update(deltaTime, currentScene);
-
-           
-
-           
                 
         }
 
