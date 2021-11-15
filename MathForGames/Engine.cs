@@ -159,7 +159,7 @@ namespace MathForGames
 
             
 
-            UIText text = new UIText(10, 10, 10, "Test Text", Color.LIME, 70, 70, 15, "This is the test text \n it is not to be taken seriously");
+            //UIText text = new UIText(10, 10, 10, "Test Text", Color.LIME, 70, 70, 15, "This is the test text \n it is not to be taken seriously");
 
             //scene.AddActor(text);
 

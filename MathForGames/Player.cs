@@ -88,7 +88,7 @@ namespace MathForGames
         public override void OnCollision(Actor actor, Scene currentScene)
         {
             if (actor is Enemy)
-                Console.WriteLine("Collison Occured");
+                Engine.CloseApplication();
         }
 
         public override void Draw()
