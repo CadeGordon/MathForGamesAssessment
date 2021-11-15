@@ -102,7 +102,7 @@ namespace MathForGames
             companion.SetColor(new Vector4(255, 165, 0, 255));
             player.AddChild(companion);
 
-            Enemy enemy = new Enemy(5, 0, 0, 50, 25, player, "Enemy", Shape.CUBE);
+            Enemy enemy = new Enemy(5, 0, 0, 25, player, "Enemy", Shape.CUBE);
             enemy.SetColor(new Vector4(255, 0, 0, 255));
             enemy.SetScale(5, 5, 5);
             AABBCollider enemyAABBBoxCollider = new AABBCollider(5, 5, 5, enemy);

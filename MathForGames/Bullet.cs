@@ -56,6 +56,8 @@ namespace MathForGames
             if (actor is Enemy)
             {
                 currentScene.RemoveActor(actor);
+                currentScene.RemoveActor(this);
+                
             }
 
 

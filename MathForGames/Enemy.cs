@@ -8,15 +8,10 @@ namespace MathForGames
 {
     class Enemy : Actor
     {
-        private Vector3 _velocity;
         private float _speed;
-        public Actor _target;
-        private float _viewDistance;
-        private float _lookAngle;
+        private Vector3 _velocity;
         private Player _player;
-        
-
-        
+        float x = 10;
 
         public float Speed
         {
@@ -30,53 +25,39 @@ namespace MathForGames
             set { _velocity = value; }
         }
 
-        public Enemy( float x, float y, float z, float viewDistance, float speed, Actor actor, string name = "Actor", Shape shape = Shape.CUBE)
+        public Enemy(float x, float y, float z, float speed, Player player, string name = "Actor", Shape shape = Shape.CUBE)
             : base(x, y, z, name, shape)
         {
-            _target = actor;
+            _player = player;
             _speed = speed;
-            _viewDistance = viewDistance;
         }
 
         public override void Update(float deltaTime, Scene currentScene)
         {
 
-            float xDirection = _target.LocalPosition.X - LocalPosition.X;
-            float yDirection = _target.LocalPosition.Y - LocalPosition.Y;
-            float zDirection = _target.LocalPosition.Z - LocalPosition.Z;
-
-
-            //Create a vector that stores the move input
-            Vector3 moveDirection = new Vector3(xDirection, yDirection, zDirection);
+            Vector3 moveDirection = _player.LocalPosition - LocalPosition;
 
             Velocity = moveDirection.Normalized * Speed * deltaTime;
 
-            if(GetTargetInSight())
-                LocalPosition += Velocity;
+            Translate(Velocity.X, Velocity.Y, Velocity.Z);
+
+            LookAt(_player.WorldPosition);
+            
+
+            AABBCollider enemyCollider = new AABBCollider(Size.X, Size.Y, Size.Z, this);
+            CircleCollider sizeChangeRadius1 = new CircleCollider(20, this);
+            Collider = enemyCollider;
 
             base.Update(deltaTime, currentScene);
-
-        }
-
-        public bool GetTargetInSight()
-        {
-            Vector3 directionOfTarget = (_target.LocalPosition - LocalPosition).Normalized;
-
-            float distance = Vector3.Distance(_target.LocalPosition, LocalPosition);
-
-
-            float dotProduct = Vector3.DotProduct(directionOfTarget, Forward);
-
-            return Vector3.DotProduct(directionOfTarget, Forward) > 0.5 && distance < _viewDistance;
         }
 
         public override void OnCollision(Actor actor, Scene currentScene)
         {
             Console.WriteLine("collison occured");
-            
+
             //currentScene.RemoveActor(actor);
-            //currentScene.RemoveActor(this);
-            
+           
+
 
         }
 
