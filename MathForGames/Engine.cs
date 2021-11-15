@@ -11,11 +11,13 @@ namespace MathForGames
     class Engine
     {
         private static bool _applicationShouldClose = false;
-        private static int _currentSceneIndex;
+        private static int _currentSeneIndex;
         private Scene[] _scenes = new Scene[0];
         private Stopwatch _stopwatch = new Stopwatch();
+        private Camera3D _camera = new Camera3D();
         Player _player;
-        private Camera _camera;
+        
+        
 
 
         /// <summary>
@@ -52,19 +54,19 @@ namespace MathForGames
             End();
         }
 
-        //private void InitializeCamera()
-        //{
-        //    //Camera position
-        //    _camera.position = new System.Numerics.Vector3(0, 10, 10);
-        //    // Point the camera is focus on
-        //    _camera.target = new System.Numerics.Vector3(0, 0, 0); 
-        //    // Point the camera is focus on
-        //    _camera.up = new System.Numerics.Vector3(0, 1, 0); 
-        //    // Camera field of view
-        //    _camera.fovy = 45;
-        //    //Camera mode type
-        //    _camera.projection = CameraProjection.CAMERA_PERSPECTIVE; 
-        //}
+        private void InitializeCamera()
+        {
+            //Camera position
+            _camera.position = new System.Numerics.Vector3(0, 10, 10);
+            // Point the camera is focus on
+            _camera.target = new System.Numerics.Vector3(0, 0, 0); 
+            // Point the camera is focus on
+            _camera.up = new System.Numerics.Vector3(0, 1, 0); 
+            // Camera field of view
+            _camera.fovy = 45;
+            //Camera mode type
+            _camera.projection = CameraProjection.CAMERA_PERSPECTIVE; 
+        }
 
 
         /// <summary>
@@ -73,31 +75,25 @@ namespace MathForGames
         private void Start()
         {
 
+
             _stopwatch.Start();
 
             //Create a window using raylib
             Raylib.InitWindow(800, 450, "Math For Games");
             Raylib.SetTargetFPS(0);
 
-            InitializeCharacters();
-            InitializeObjects();
+            InitializeCamera();
 
-            _scenes[_currentSceneIndex].Start();
+            
 
-
-            Console.CursorVisible = false;
-        }
-
-        public void InitializeCharacters()
-        {
             Scene scene = new Scene();
 
             Player player = new Player(0, 0, 0, 50, "player", Shape.SPHERE);
+
             player.SetScale(1, 1, 1);
             player.SetColor(new Vector4(0, 0, 255, 255));
             _player = player;
-            player.AddChild(_camera);
-
+            
             CircleCollider playerCircleCollider = new CircleCollider(1, player);
             player.Collider = playerCircleCollider;
 
@@ -124,36 +120,31 @@ namespace MathForGames
             scene.AddActor(player);
             scene.AddActor(companion);
             scene.AddActor(enemy);
-            
-            scene.AddActor(_camera);
-
-            _currentSceneIndex = AddScene(scene);
-        }
-
-        public void InitializeObjects()
-        {
-            Scene scene = new Scene();
-
-            Actor floor = new Actor(0, 0, 0, "floor");
-            floor.SetScale(200, 1, 200);
-            floor.SetTranslation(0, -2, 0);
-            floor.SetColor(new Vector4(0, 0, 0, 255));
-
             scene.AddActor(floor);
+            
+            
 
 
-            _currentSceneIndex = AddScene(scene);
+
+            _currentSeneIndex = AddScene(scene);
+
+           
+
+            Console.CursorVisible = false;
         }
 
-
+       
 
         /// <summary>
         ///Called everytime the game loops 
         /// </summary>
         private void Update(float deltaTime)
         {
-            _scenes[_currentSceneIndex].Update(deltaTime, _scenes[_currentSceneIndex]);
+            _scenes[_currentSeneIndex].Update(deltaTime, _scenes[_currentSeneIndex]);
 
+            //change the prespective of the camera (example first person)
+            _camera.position = new System.Numerics.Vector3(_player.WorldPosition.X, _player.WorldPosition.Y + 5, _player.WorldPosition.Z + 15);
+            _camera.target = new System.Numerics.Vector3(_player.WorldPosition.X, _player.WorldPosition.Y, _player.WorldPosition.Z);
            
            
             while (Console.KeyAvailable)
@@ -167,13 +158,13 @@ namespace MathForGames
         {
             
             Raylib.BeginDrawing();
-            Raylib.BeginMode3D(_camera.Camera3D);
+            Raylib.BeginMode3D(_camera);
 
             Raylib.ClearBackground(Color.RAYWHITE);
             Raylib.DrawGrid(200, 1);
 
             //Adds all actor icons to buffer
-            _scenes[_currentSceneIndex].Draw();
+            _scenes[_currentSeneIndex].Draw();
 
             Raylib.EndMode3D();
             Raylib.EndDrawing();
@@ -184,7 +175,7 @@ namespace MathForGames
         /// </summary>
         private void End()
         {
-            _scenes[_currentSceneIndex].End();
+            _scenes[_currentSeneIndex].End();
             Raylib.CloseWindow();
         }
 

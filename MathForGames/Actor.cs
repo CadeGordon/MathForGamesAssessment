@@ -185,7 +185,7 @@ namespace MathForGames
         { }
         
         
-        
+        public Actor() { }
         
 
 
@@ -212,7 +212,13 @@ namespace MathForGames
 
         }
 
-       
+        public Vector3 Right
+        {
+            get { return new Vector3(_rotation.M00, _rotation.M10, _rotation.M20); }
+
+        }
+
+
 
         public Collider Collider
         {
