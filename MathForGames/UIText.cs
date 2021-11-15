@@ -25,6 +25,7 @@ namespace MathForGames
             FontSize = fontsize;
             Font = Raylib.LoadFont("resources/fonts/alagrad.png");
             FontColor = color;
+            SetColor(color);
 
         }
 

@@ -51,16 +51,18 @@ namespace MathForGames
 
             if (bulletDirectionX != 0 && _bulletTimer >= .3 || bulletDirectionZ != 0 && _bulletTimer >= .3)
             {
-                Bullet bullet = new Bullet(LocalPosition.X, LocalPosition.Y, LocalPosition.Z, bulletDirectionX, bulletDirectionZ, 60, "Bullet", Shape.SPHERE);
+                Bullet bullet = new Bullet(LocalPosition.X, LocalPosition.Y, LocalPosition.Z, bulletDirectionX, bulletDirectionZ, 100, "Bullet", Shape.SPHERE);
                 CircleCollider bulletCollider = new CircleCollider(1f, bullet);
                 bullet.Collider = bulletCollider;
-                bullet.SetScale(.5f, .5f, .5f);
+                bullet.SetScale(.3f, .3f, .3f);
                 bullet.SetColor(new Vector4(234, 134, 154, 255));
                 currentScene.AddActor(bullet);
 
 
                 _bulletTimer = 0;
             }
+
+            
 
             
 

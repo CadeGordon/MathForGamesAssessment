@@ -49,6 +49,12 @@ namespace MathForGames
             Collider = enemyCollider;
 
             base.Update(deltaTime, currentScene);
+
+
+
+
+
+            
         }
 
         public override void OnCollision(Actor actor, Scene currentScene)
@@ -56,6 +62,8 @@ namespace MathForGames
             Console.WriteLine("collison occured");
 
             //currentScene.RemoveActor(actor);
+            
+            
            
 
 

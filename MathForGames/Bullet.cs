@@ -44,7 +44,10 @@ namespace MathForGames
             LocalPosition += Velocity;
 
             base.Update(deltaTime, currentScene);
-                
+
+            if (Raylib.IsKeyPressed(KeyboardKey.KEY_SPACE))
+                SetScale(5, 5, 5);
+
         }
 
         
@@ -57,6 +60,7 @@ namespace MathForGames
             {
                 currentScene.RemoveActor(actor);
                 currentScene.RemoveActor(this);
+                currentScene.EnemyCount--;
                 
             }
 

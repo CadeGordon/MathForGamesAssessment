@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Raylib_cs;
 
 namespace MathForGames
 {
@@ -11,6 +12,7 @@ namespace MathForGames
         /// </summary>
         private Actor[] _actors;
         private Actor[] _UIElements;
+        private int _enemyCount = 8;
 
 
         public Scene()
@@ -24,6 +26,12 @@ namespace MathForGames
         /// </summary>
         public virtual void Start()
         {
+        }
+
+        public int EnemyCount
+        {
+            get { return _enemyCount; }
+            set { _enemyCount = value; }
         }
 
         /// <summary>
@@ -49,6 +57,12 @@ namespace MathForGames
                     }
                     
                 }
+            }
+
+            if (EnemyCount == 0)
+            {
+                UIText text = new UIText(10, 10, 10, "Test Text", Color.LIME, 70, 70, 15, "This is the test text \n it is not to be taken seriously");
+                currentScene.AddUIElement(text);
             }
         }
 
