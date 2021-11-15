@@ -13,6 +13,7 @@ namespace MathForGames
         public Actor _target;
         private float _viewDistance;
         private float _lookAngle;
+        private Player _player;
         
 
         
@@ -72,7 +73,7 @@ namespace MathForGames
         public override void OnCollision(Actor actor, Scene currentScene)
         {
             Console.WriteLine("collison occured");
-            SetScale(50, 50, 50);
+            
             //currentScene.RemoveActor(actor);
             //currentScene.RemoveActor(this);
             

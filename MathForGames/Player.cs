@@ -10,8 +10,11 @@ namespace MathForGames
     class Player : Actor
     {
         private Vector3 _velocity;
+        private Vector3 _currentPosition;
         private float _speed;
         private float _bulletTimer;
+        private float _currentSpeed;
+        int i = 80;
         
         
 
@@ -41,46 +44,45 @@ namespace MathForGames
             int zDirection = -Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_W))
                + Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_S));
 
-            int bulletDirectionX = -Convert.ToInt32(Raylib.IsKeyPressed(KeyboardKey.KEY_LEFT))
-               + Convert.ToInt32(Raylib.IsKeyPressed(KeyboardKey.KEY_RIGHT));
+            int rotZRotation = Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_O))
+                - Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_P));
 
-            int bulletDirectionZ = -Convert.ToInt32(Raylib.IsKeyPressed(KeyboardKey.KEY_UP))
-               + Convert.ToInt32(Raylib.IsKeyPressed(KeyboardKey.KEY_DOWN));
+            //int bulletDirectionX = -Convert.ToInt32(Raylib.IsKeyPressed(KeyboardKey.KEY_LEFT))
+            //   + Convert.ToInt32(Raylib.IsKeyPressed(KeyboardKey.KEY_RIGHT));
 
-            _bulletTimer += deltaTime;
+            //int bulletDirectionZ = -Convert.ToInt32(Raylib.IsKeyPressed(KeyboardKey.KEY_UP))
+            //   + Convert.ToInt32(Raylib.IsKeyPressed(KeyboardKey.KEY_DOWN));
 
-            if (bulletDirectionX != 0 && _bulletTimer >= .3 || bulletDirectionZ != 0 && _bulletTimer >= .3)
-            {
-                Bullet bullet = new Bullet(LocalPosition.X, LocalPosition.Y, LocalPosition.Z, bulletDirectionX, bulletDirectionZ, 60, "Bullet", Shape.SPHERE);
-                CircleCollider bulletCollider = new CircleCollider(1f, bullet);
-                bullet.Collider = bulletCollider;
-                bullet.SetScale(.5f, .5f, .5f);
-                bullet.SetColor(new Vector4(234, 134, 154, 255));
-                currentScene.AddActor(bullet);
+            //_bulletTimer += deltaTime;
+
+            //if (bulletDirectionX != 0 && _bulletTimer >= .3 || bulletDirectionZ != 0 && _bulletTimer >= .3)
+            //{
+            //    Bullet bullet = new Bullet(LocalPosition.X, LocalPosition.Y, LocalPosition.Z, bulletDirectionX, bulletDirectionZ, 60, "Bullet", Shape.SPHERE);
+            //    CircleCollider bulletCollider = new CircleCollider(1f, bullet);
+            //    bullet.Collider = bulletCollider;
+            //    bullet.SetScale(.5f, .5f, .5f);
+            //    bullet.SetColor(new Vector4(234, 134, 154, 255));
+            //    currentScene.AddActor(bullet);
 
 
-                _bulletTimer = 0;
-            }
+            //    _bulletTimer = 0;
+            //}
 
-            
 
-            
 
-            //Create a vector that stores the move input
-            Vector3 moveDirection = new Vector3(xDirection, 0, zDirection);
 
-            Velocity = moveDirection.Normalized * Speed * deltaTime;
 
-            if (Velocity.Magnitude > 0)
-               Forward = Velocity.Normalized;
+            Velocity = ((zDirection * Forward) + (xDirection * Right)).Normalized * _currentSpeed * deltaTime;
 
-            //Translate(_velocity.X, 0, _velocity.Z);
 
-            LocalPosition += Velocity;
 
+            _currentSpeed = Speed;
+
+            Rotate(0, rotZRotation * 0.05f, 0);
+            Translate(Velocity.X, 0, Velocity.Z);
 
             base.Update(deltaTime, currentScene);
-            
+
         }
 
         public override void OnCollision(Actor actor, Scene currentScene)
