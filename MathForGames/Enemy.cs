@@ -11,7 +11,7 @@ namespace MathForGames
         private float _speed;
         private Vector3 _velocity;
         private Player _player;
-        float x = 10;
+        
 
         //Sets the speed of the enemy
         public float Speed

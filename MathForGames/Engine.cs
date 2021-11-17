@@ -11,7 +11,7 @@ namespace MathForGames
     class Engine
     {
         private static bool _applicationShouldClose = false;
-        private static int _currentSeneIndex;
+        private static int _currentSceneIndex;
         private Scene[] _scenes = new Scene[0];
         private Stopwatch _stopwatch = new Stopwatch();
         private Camera3D _camera = new Camera3D();
@@ -183,7 +183,7 @@ namespace MathForGames
 
 
 
-            _currentSeneIndex = AddScene(scene);
+            _currentSceneIndex = AddScene(scene);
 
            
 
@@ -197,7 +197,7 @@ namespace MathForGames
         /// </summary>
         private void Update(float deltaTime)
         {
-            _scenes[_currentSeneIndex].Update(deltaTime, _scenes[_currentSeneIndex]);
+            _scenes[_currentSceneIndex].Update(deltaTime, _scenes[_currentSceneIndex]);
 
             //change the prespective of the camera (example first person)
             _camera.position = new System.Numerics.Vector3(_player.WorldPosition.X, _player.WorldPosition.Y + 5, _player.WorldPosition.Z + 15);
@@ -221,7 +221,7 @@ namespace MathForGames
             Raylib.DrawGrid(200, 1);
 
             //Adds all actor icons to buffer
-            _scenes[_currentSeneIndex].Draw();
+            _scenes[_currentSceneIndex].Draw();
 
             Raylib.EndMode3D();
             Raylib.EndDrawing();
@@ -232,7 +232,7 @@ namespace MathForGames
         /// </summary>
         private void End()
         {
-            _scenes[_currentSeneIndex].End();
+            _scenes[_currentSceneIndex].End();
             Raylib.CloseWindow();
         }
 

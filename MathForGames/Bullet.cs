@@ -11,7 +11,7 @@ namespace MathForGames
     {
         private Vector3 _velocity;
         private float _speed;
-        private float _timer;
+        
 
 
         //Sets the speed of the bullet

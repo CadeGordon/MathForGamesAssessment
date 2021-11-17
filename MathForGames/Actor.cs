@@ -26,7 +26,6 @@ namespace MathForGames
         private Matrix4 _scale = Matrix4.Identity;
         private Actor[] _children = new Actor[0];
         private Actor _parent;
-        private Sprite _sprite;
         private Shape _shape;
         private Color _color;
 
@@ -54,7 +53,7 @@ namespace MathForGames
             }
         }
 
-
+        //Updates the transform of the parent so the child can follow
         public void UpdateTransform()
         {
             if (Parent != null)
@@ -204,6 +203,7 @@ namespace MathForGames
            
         }
 
+        //gets the forwards rotation then normalizes the world position
         public Vector3 Forward
         {
             get { return new Vector3(_rotation.M02, _rotation.M12, _rotation.M22); }
