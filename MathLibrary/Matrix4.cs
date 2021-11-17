@@ -34,7 +34,7 @@ namespace MathLibrary
         /// Creates a new matric that has been rotated by the given value in radians
         /// </summary>
         /// <param name="raidans"></param>
-        /// <returns>The result of the rotation</returns>
+        /// <returns>The result of the rotation on the z axis</returns>
         public static Matrix4 CreateRotationZ(float radians)
         {
             return new Matrix4((float)Math.Cos(radians), -(float)Math.Sin(radians), 0, 0,
@@ -44,6 +44,11 @@ namespace MathLibrary
 
         }
 
+        /// <summary>
+        /// Creates a new matric that has been rotated by the given value in radians
+        /// </summary>
+        /// <param name="raidans"></param>
+        /// <returns>The result of the rotation on the y axis</returns>
         public static Matrix4 CreateRotationY(float radians)
         {
             return new Matrix4((float)Math.Cos(radians), 0, (float)Math.Sin(radians), 0,
@@ -53,6 +58,11 @@ namespace MathLibrary
 
         }
 
+        /// <summary>
+        /// Creates a new matric that has been rotated by the given value in radians
+        /// </summary>
+        /// <param name="raidans"></param>
+        /// <returns>The result of the rotation on the x axis</returns>
         public static Matrix4 CreateRotationX(float radians)
         {
             return new Matrix4(1, 0, 0, 0,
@@ -90,6 +100,7 @@ namespace MathLibrary
                                0, 0, 0, 1);
         }
 
+        //overload operator for addition in A matrix 4
         public static Matrix4 operator +(Matrix4 lhs, Matrix4 rhs)
         {
             return new Matrix4((lhs.M00 + rhs.M00), (lhs.M01 + rhs.M01), (lhs.M02 + rhs.M02), (lhs.M03 + rhs.M03),
@@ -100,6 +111,7 @@ namespace MathLibrary
 
         }
 
+        //overload operator for subtraction in A matrix 4
         public static Matrix4 operator -(Matrix4 lhs, Matrix4 rhs)
         {
             return new Matrix4((lhs.M00 - rhs.M00), (lhs.M01 - rhs.M01), (lhs.M02 - rhs.M02), (lhs.M03 - rhs.M03),
@@ -109,6 +121,7 @@ namespace MathLibrary
                 );
         }
 
+        //overload operator for multiplication in A matrix 4
         public static Matrix4 operator *(Matrix4 lhs, Matrix4 rhs)
         {
             return new Matrix4
@@ -153,6 +166,7 @@ namespace MathLibrary
 
         }
 
+        //overload operator for multiplaction multiplying the floats of x y and z in a matrix 4
         public static Vector4 operator *(Matrix4 lhs, Vector4 rhs)
         {
             return new Vector4((lhs.M00 * rhs.X) + (lhs.M01 * rhs.Y) + (lhs.M02 * rhs.Z) + (lhs.M03 * rhs.W),

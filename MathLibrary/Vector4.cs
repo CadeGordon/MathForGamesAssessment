@@ -106,7 +106,7 @@ namespace MathLibrary
 
 
         /// <summary>
-        /// Multiplies the vectors x and y values by the scalar
+        /// Multiplies the vectors x, y, z, and w values by the scalar
         /// </summary>
         /// <param name="lhs">the vector that is being scaled</param>
         /// <param name="rhs">The value to scale the vector by</param>
@@ -116,6 +116,12 @@ namespace MathLibrary
             return new Vector4 { X = lhs.X * rhs, Y = lhs.Y * rhs, Z = lhs.Z * rhs, W = lhs.W * rhs };
         }
 
+        /// <summary>
+        /// Multiplies the scalar by the vectors x, y, z, and w values
+        /// </summary>
+        /// <param name="lhs">the vector that is being scaled</param>
+        /// <param name="rhs">The value to scale the vector by</param>
+        /// <returns>The result of the vector scaling</returns>
         public static Vector4 operator *(float rhs, Vector4 lhs)
         {
             return new Vector4 { X = lhs.X * rhs, Y = lhs.Y * rhs, Z = lhs.Z * rhs, W = lhs.W * rhs };

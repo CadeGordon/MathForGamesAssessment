@@ -62,6 +62,7 @@ namespace MathLibrary
             return (lhs.X * rhs.X) + (lhs.Y * rhs.Y) + (lhs.Z * rhs.Z);
         }
 
+        //Multiplies all the possible outcomes of the vector3 left and right hand sides
         public static Vector3 CrossProduct(Vector3 lhs, Vector3 rhs)
         {
             return new Vector3  (lhs.Y * rhs.Z - lhs.Z * rhs.Y,
@@ -92,7 +93,7 @@ namespace MathLibrary
         }
 
         /// <summary>
-        /// Subtracts the x value of the second vector to the first, and subtracts the y value of the second vector to the first
+        /// Subtracts the x value of the second vector to the first, and subtracts the y value of the second vector to the first, and subtracts the z value fothe 3rd vector to the second
         /// </summary>
         /// <param name="lhs">The vector that is subtracting</param>
         /// <param name="rhs">The vector used to Subtract from the 1st vector</param>
@@ -104,7 +105,7 @@ namespace MathLibrary
 
 
         /// <summary>
-        /// Multiplies the vectors x and y values by the scalar
+        /// Multiplies the vectors x, y, and z  values by the scalar
         /// </summary>
         /// <param name="lhs">the vector that is being scaled</param>
         /// <param name="rhs">The value to scale the vector by</param>
@@ -114,6 +115,12 @@ namespace MathLibrary
             return new Vector3 { X = lhs.X * rhs, Y = lhs.Y * rhs, Z = lhs.Z * rhs };
         }
 
+        /// <summary>
+        /// Multiplies the scalars by the vectors
+        /// </summary>
+        /// <param name="rhs"></param>
+        /// <param name="lhs"></param>
+        /// <returns></returns>
         public static Vector3 operator *(float rhs, Vector3 lhs)
         {
             return new Vector3 { X = lhs.X * rhs, Y = lhs.Y * rhs, Z = lhs.Z * rhs };

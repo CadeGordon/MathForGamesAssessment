@@ -73,6 +73,7 @@ namespace MathLibrary
                                0, 0, 1);
         }
         
+        //overload operator for addition in A matrix 3
         public static Matrix3 operator +(Matrix3 lhs, Matrix3 rhs)
         {
             return new Matrix3  (lhs.M00 + rhs.M00, lhs.M01 + rhs.M01, lhs.M02 + rhs.M02,
@@ -81,6 +82,7 @@ namespace MathLibrary
              
         }
 
+        //overload operator for subtraction in A matrix 3
         public static Matrix3 operator -(Matrix3 lhs, Matrix3 rhs)
         {
             return new Matrix3 (lhs.M00 - rhs.M00, lhs.M01 - rhs.M01, lhs.M02 - rhs.M02,
@@ -88,6 +90,7 @@ namespace MathLibrary
                                  lhs.M20 - rhs.M20, lhs.M21 - rhs.M21, lhs.M22 - rhs.M22);
         }
 
+        //overload operator for multiplication in A matrix 3
         public static Matrix3 operator *(Matrix3 lhs, Matrix3 rhs)
         {
             return new Matrix3
@@ -116,6 +119,7 @@ namespace MathLibrary
 
         }
 
+        //overload operator for multiplaction multiplying the floats of x y and z in a matrix 3
         public static Vector3 operator *(Matrix3 lhs, Vector3 rhs)
         {
             return new Vector3((lhs.M00 * rhs.X) + (lhs.M01 * rhs.Y) + (lhs.M02 * rhs.Z),
