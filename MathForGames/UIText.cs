@@ -16,6 +16,7 @@ namespace MathForGames
         public int FontSize;
         public Color FontColor;
 
+        //Constructor for the ui text
         public UIText(float x, float y, float z, string name, Color color, int width, int height, int fontsize, string text = "")
             : base (x, y, z, name)
         {
@@ -29,9 +30,10 @@ namespace MathForGames
 
         }
 
+        //Draws a border around the text to make it stand out more
         public override void Draw()
         {
-            //Create a new rectangel that willa ct as the borders of the text box
+            //Create a new rectangle that will act as the borders of the text box
             Rectangle textBox = new Rectangle(LocalPosition.X, LocalPosition.Y, Width, Height);
             //Draw text box
             Raylib.DrawTextRec(Font, Text, textBox, FontSize, 1, true, FontColor);

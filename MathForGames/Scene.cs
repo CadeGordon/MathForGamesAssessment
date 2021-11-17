@@ -14,7 +14,7 @@ namespace MathForGames
         private Actor[] _UIElements;
         private int _enemyCount = 8;
 
-
+        //Conscutrrs for scene thaat sets actor and UI elements arrays
         public Scene()
         {
             _actors = new Actor[0];
@@ -28,6 +28,7 @@ namespace MathForGames
         {
         }
 
+        //Sets the enemy count
         public int EnemyCount
         {
             get { return _enemyCount; }
@@ -59,17 +60,22 @@ namespace MathForGames
                 }
             }
 
+            //If the enemy count reaches 0...
             if (EnemyCount == 0)
             {
+                //...Application closes
                 Engine.CloseApplication();
             }
         }
 
+        //updates all Ui elements
         public virtual void UpdateUI(float deltaTime, Scene currentScene)
         {
             for (int i = 0; i < _UIElements.Length; i++)
             {
+                //If you UI elements is called on start
                 if (!_UIElements[i].Started)
+                    //... Ui elements called
                     _UIElements[i].Start();
 
                 _UIElements[i].Update(deltaTime, currentScene);
@@ -77,6 +83,7 @@ namespace MathForGames
             
         }
 
+        //When called draws the UI to the scene
         public virtual void DrawUI()
         {
             for (int i = 0; i < _UIElements.Length; i++)
@@ -114,6 +121,7 @@ namespace MathForGames
             }
         }
 
+        
         public virtual void AddUIElement(Actor UI)
         {
             Actor[] tempArray = new Actor[_UIElements.Length + 1];

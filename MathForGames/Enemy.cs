@@ -13,18 +13,21 @@ namespace MathForGames
         private Player _player;
         float x = 10;
 
+        //Sets the speed of the enemy
         public float Speed
         {
             get { return _speed; }
             set { _speed = value; }
         }
 
+        //Sets the velocity of the enemy
         public Vector3 Velocity
         {
             get { return _velocity; }
             set { _velocity = value; }
         }
 
+        //Gets the position, velocity and speed of the enemy
         public Enemy(float x, float y, float z, float speed, Player player, string name = "Actor", Shape shape = Shape.CUBE)
             : base(x, y, z, name, shape)
         {
@@ -32,6 +35,9 @@ namespace MathForGames
             _speed = speed;
         }
 
+        /// <summary>
+        /// called everytime the game loops
+        /// </summary>
         public override void Update(float deltaTime, Scene currentScene)
         {
 
@@ -50,26 +56,15 @@ namespace MathForGames
 
             base.Update(deltaTime, currentScene);
 
-
-
-
-
-            
         }
 
+        //Calls when actor collides with actor
         public override void OnCollision(Actor actor, Scene currentScene)
         {
-            Console.WriteLine("collison occured");
-
-            //currentScene.RemoveActor(actor);
-            
-            
-            
-           
-
 
         }
 
+        //Draws the enemy to the screen
         public override void Draw()
         {
             base.Draw();

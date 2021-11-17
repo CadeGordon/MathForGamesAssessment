@@ -54,6 +54,8 @@ namespace MathForGames
             End();
         }
 
+
+        //Initializes Camera to be called and setup in the game
         private void InitializeCamera()
         {
             //Camera position

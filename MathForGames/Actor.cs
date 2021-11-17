@@ -30,6 +30,7 @@ namespace MathForGames
         private Shape _shape;
         private Color _color;
 
+        //Gets the color of the shape 
         public Color ShapeColor
         {
             get { return _color; }
@@ -43,6 +44,7 @@ namespace MathForGames
             get { return _started; }
         }
 
+        //gets the local posiotion of the Actor and and the translation of x, y, and z of the actor
         public Vector3 LocalPosition
         {
             get { return new Vector3(_translation.M03, _translation.M13,_translation.M23); }
@@ -51,6 +53,7 @@ namespace MathForGames
                 SetTranslation(value.X, value.Y, value.Z);
             }
         }
+
 
         public void UpdateTransform()
         {
@@ -62,6 +65,7 @@ namespace MathForGames
             
         }
 
+        //Adds child to the scene and allows it to be childed to a actor
         public void AddChild(Actor child)
         {
             
@@ -81,6 +85,7 @@ namespace MathForGames
             _children = tempArray;
         }
 
+        //Removes child from the scene and allows to be removed from parent actor
         public bool RemoveChild(Actor child)
         {
             //Create a variable to store if the removal was successful
@@ -141,30 +146,34 @@ namespace MathForGames
             }
         }
 
+        //Sets the global transfrom of the actor
         public Matrix4 GlobalTransform
         {
             get { return _globalTransform; }
             set { _globalTransform = value; }
         }
 
+        //Sets the local transform of the actor
         public Matrix4 LocalTransform
         {
             get { return _localTransform; }
             set { _localTransform = value; }
         }
 
+        //Sets the parent of Actor
         public Actor Parent
         {
             get { return _parent; }
             set { _parent = value; }
         }
 
+        //Gets the array of children 
         public Actor[] Children
         {
             get { return _children; }
         }
 
-
+        //Sets the size of the actor
         public Vector3 Size
         {
             get 
@@ -184,10 +193,6 @@ namespace MathForGames
             this( new Vector3 { X = x, Y = y, Z = z }, name, shape)
         { }
         
-        
-        public Actor() { }
-        
-
 
         public Actor( Vector3 position, string name = "Actor" , Shape shape = Shape.CUBE)
 
@@ -214,18 +219,20 @@ namespace MathForGames
 
 
 
-
+        //Sets the colliders for the actor
         public Collider Collider
         {
             get { return _collider; }
             set { _collider = value; }
         }
 
+        //Called on application start
         public virtual void Start()
         {
             _started = true;
         }
 
+        //Called everytime the game loops
         public virtual void Update(float deltaTime, Scene currentScene)
         {
             //Rotate(2 * deltaTime);
@@ -236,21 +243,25 @@ namespace MathForGames
 
         }
 
+        //Draws the position on the actors
         public virtual void Draw()
         {
             System.Numerics.Vector3 startPos = new System.Numerics.Vector3(WorldPosition.X, WorldPosition.Y, WorldPosition.Z);
             System.Numerics.Vector3 endPos = new System.Numerics.Vector3(WorldPosition.X + Forward.X * 50, WorldPosition.Y + Forward.Y * 50, WorldPosition.Z + Forward.Z * 50);
 
-
+            //When shape is cube...
             switch (_shape) 
             {
+                //... get global transform and size of the cube actor
                 case Shape.CUBE:
                     float sizeX = new Vector3(GlobalTransform.M00, GlobalTransform.M10, GlobalTransform.M20).Magnitude;
                     float sizeY = new Vector3(GlobalTransform.M01, GlobalTransform.M11, GlobalTransform.M21).Magnitude;
                     float sizeZ = new Vector3(GlobalTransform.M02, GlobalTransform.M12, GlobalTransform.M22).Magnitude;
                     Raylib.DrawCube(startPos, sizeX, sizeY, sizeZ, ShapeColor);
                     break;
+                    //when shape is sphere...
                 case Shape.SPHERE:
+                    //get the global transform and size of the sphere actor
                     sizeX = new Vector3(GlobalTransform.M00, GlobalTransform.M10, GlobalTransform.M20).Magnitude;
                     Raylib.DrawSphere(startPos, sizeX, ShapeColor);
                     break;
@@ -258,16 +269,20 @@ namespace MathForGames
                 
 
             }
-            
+               //Draws line to see how far the actor is looking forward
                 Raylib.DrawLine3D(startPos, endPos, Color.RED);
 
         }
 
+        /// <summary>
+        /// Called when the application exits
+        /// </summary>
         public void End()
         {
 
         }
 
+        //Called when actor collides with another actor
         public virtual void OnCollision(Actor actor, Scene currentScene)
         {
 
@@ -276,7 +291,7 @@ namespace MathForGames
         /// <summary>
         /// Check if this actor collided with another actor
         /// </summary>
-        /// <param name="other">Thea ctor to check for a collision</param>
+        /// <param name="other">The actor to check for a collision</param>
         /// <returns>True if the distance bewteen  the actors is less than the radii of the two combined</returns>
         public virtual bool CheckForCollision(Actor other)
         {
@@ -411,6 +426,7 @@ namespace MathForGames
                                     0, 0, 0, 1);
         }
 
+        //Sets the color of the actor
         public void SetColor(Color color)
         {
             _color = color;

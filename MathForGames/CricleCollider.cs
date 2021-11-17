@@ -10,19 +10,23 @@ namespace MathForGames
     {
         private float _collisionRadius;
 
+        //Sets the collision radius of circle collider
         public float CollisionRadius
         {
             get { return _collisionRadius; }
             set { _collisionRadius = value; }
         }
 
+        //Constructor for circle collider
         public CircleCollider(float collisionRadius, Actor owner) : base(owner, ColliderType.CIRCLE)
         {
             _collisionRadius = collisionRadius;
         }
 
+        //Check for circle collision
         public override bool CheckCollisionCircle(CircleCollider other)
         {
+            //Return false if this owner is checking for a collision againts itself
             if (other.Owner == Owner)
                 return false;
 
@@ -58,6 +62,7 @@ namespace MathForGames
             return distanceFromClosestPoint <= CollisionRadius;
         }
 
+        //Draws circle collider to scene
         public override void Draw()
         {
             base.Draw();

@@ -30,6 +30,9 @@ namespace MathForGames
             set { _height = value; }
         }
 
+        /// <summary>
+        /// the size of this collider on the z axis
+        /// </summary>
         public float Depth
         {
             get { return _depth; }
@@ -80,6 +83,9 @@ namespace MathForGames
             }
         }
 
+        /// <summary>
+        /// the farthest z posistion forwards
+        /// </summary>
         public float Front 
         {
             get
@@ -88,6 +94,9 @@ namespace MathForGames
             }
         }
 
+        /// <summary>
+        /// the farthest z posistion towards the back
+        /// </summary>
         public float Back
         {
             get
@@ -96,7 +105,7 @@ namespace MathForGames
             }
         }
 
-
+        //Constructor for AABBCollider
         public AABBCollider(float width, float height, float depth, Actor owner) : base(owner, ColliderType.AABB)
         {
             _width = width;
@@ -105,6 +114,7 @@ namespace MathForGames
 
         }
 
+        //Checks for AABB collision
         public override bool CheckCollisionAABB(AABBCollider other)
         {
             //Return false if this owner is checking for a collision againts itself
@@ -126,11 +136,14 @@ namespace MathForGames
             return false;
         }
 
+        //Checks for circle collision
         public override bool CheckCollisionCircle(CircleCollider other)
         {
+            //returns AABB collision if it collides with circle collider
             return other.CheckCollisionAABB(this);
         }
 
+        //Draws the collider box around actor
         public override void Draw()
         {
             Raylib.DrawCubeWires(new System.Numerics.Vector3(Owner.WorldPosition.X, Owner.WorldPosition.Y, Owner.WorldPosition.Z), Width, Height, Depth, Color.RED);
