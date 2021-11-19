@@ -67,7 +67,7 @@ namespace MathForGames
                 bullet.SetColor(new Vector4(234, 134, 154, 255));
                 currentScene.AddActor(bullet);
 
-                //bullettimer set to default 0
+                //bullettimer set to default 0sd
                 _bulletTimer = 0;
             }
 

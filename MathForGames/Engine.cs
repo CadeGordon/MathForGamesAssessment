@@ -106,49 +106,49 @@ namespace MathForGames
             
             
 
-            Enemy enemy = new Enemy(100, 0, 50, 25, player, "Enemy", Shape.CUBE);
+            Enemy enemy = new Enemy(100, 0, 50, 40, player, "Enemy", Shape.CUBE);
             enemy.SetColor(new Vector4(255, 0, 0, 255));
             enemy.SetScale(5, 5, 5);
             AABBCollider enemyAABBBoxCollider = new AABBCollider(5, 5, 5, enemy);
             enemy.Collider = enemyAABBBoxCollider;
 
-            Enemy enemy2 = new Enemy(-100, 0, 50, 25, player, "Enemy", Shape.CUBE);
+            Enemy enemy2 = new Enemy(-100, 0, 50, 40, player, "Enemy", Shape.CUBE);
             enemy2.SetColor(new Vector4(255, 0, 0, 255));
             enemy2.SetScale(5, 5, 5);
             AABBCollider enemy2AABBBoxCollider = new AABBCollider(5, 5, 5, enemy2);
             enemy2.Collider = enemy2AABBBoxCollider;
 
-            Enemy enemy3 = new Enemy(200, 0, 50, 25, player, "Enemy", Shape.CUBE);
+            Enemy enemy3 = new Enemy(200, 0, 50, 40, player, "Enemy", Shape.CUBE);
             enemy3.SetColor(new Vector4(255, 0, 0, 255));
             enemy3.SetScale(5, 5, 5);
             AABBCollider enemy3AABBBoxCollider = new AABBCollider(5, 5, 5, enemy3);
             enemy3.Collider = enemy3AABBBoxCollider;
 
-            Enemy enemy4 = new Enemy(-200, 0, 50, 25, player, "Enemy", Shape.CUBE);
+            Enemy enemy4 = new Enemy(-200, 0, 50, 40, player, "Enemy", Shape.CUBE);
             enemy4.SetColor(new Vector4(255, 0, 0, 255));
             enemy4.SetScale(5, 5, 5);
             AABBCollider enemy4AABBBoxCollider = new AABBCollider(5, 5, 5, enemy4);
             enemy4.Collider = enemy4AABBBoxCollider;
 
-            Enemy enemy5 = new Enemy(300, 0, 50, 25, player, "Enemy", Shape.CUBE);
+            Enemy enemy5 = new Enemy(300, 0, 50, 40, player, "Enemy", Shape.CUBE);
             enemy5.SetColor(new Vector4(255, 0, 0, 255));
             enemy5.SetScale(5, 5, 5);
             AABBCollider enemy5AABBBoxCollider = new AABBCollider(5, 5, 5, enemy5);
             enemy5.Collider = enemy5AABBBoxCollider;
 
-            Enemy enemy6 = new Enemy(-300, 0, 50, 25, player, "Enemy", Shape.CUBE);
+            Enemy enemy6 = new Enemy(-300, 0, 50, 40, player, "Enemy", Shape.CUBE);
             enemy6.SetColor(new Vector4(255, 0, 0, 255));
             enemy6.SetScale(5, 5, 5);
             AABBCollider enemy6AABBBoxCollider = new AABBCollider(5, 5, 5, enemy6);
             enemy6.Collider = enemy6AABBBoxCollider;
 
-            Enemy enemy7 = new Enemy(400, 0, 50, 25, player, "Enemy", Shape.CUBE);
+            Enemy enemy7 = new Enemy(400, 0, 50, 40, player, "Enemy", Shape.CUBE);
             enemy7.SetColor(new Vector4(255, 0, 0, 255));
             enemy7.SetScale(5, 5, 5);
             AABBCollider enemy7AABBBoxCollider = new AABBCollider(5, 5, 5, enemy7);
             enemy7.Collider = enemy7AABBBoxCollider;
 
-            Enemy enemy8 = new Enemy(-400, 0, 50, 25, player, "Enemy", Shape.CUBE);
+            Enemy enemy8 = new Enemy(-400, 0, 50, 40, player, "Enemy", Shape.CUBE);
             enemy8.SetColor(new Vector4(255, 0, 0, 255));
             enemy8.SetScale(5, 5, 5);
             AABBCollider enemy8AABBBoxCollider = new AABBCollider(5, 5, 5, enemy8);
